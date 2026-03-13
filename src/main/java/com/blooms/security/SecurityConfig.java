@@ -1,4 +1,4 @@
-package com.blooms.config;
+package com.blooms.security;
 
 import com.blooms.security.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
@@ -43,7 +43,7 @@ public class SecurityConfig {
             throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(org.springframework.security.config.Customizer.withDefaults())
+                .cors(c -> {})
                 .authorizeHttpRequests(a -> a
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET,
